@@ -1,14 +1,13 @@
-.heading {
+.heading {  
+    width: 100%;
+    margin: auto;
     font-family: Tahoma, sans-serif;
     display: flex;
-    align-items: center;
-    align-items: center;
-    text-align: center;
-    justify-content: space-around;
     padding: 0;
     border-bottom: 1px;
     border-color: black;
     border-style: solid;
+    justify-content: center;
 }
 
 .heading h1::after{
@@ -36,14 +35,17 @@
     font-size: 40px;
 }
 
+#studentLogo {
+    font-size: 40px;
+}
+
 .tab {
-    margin-left: 650px;
-    margin-right: 650px;
-    flex-direction: row;
+    margin-top: -10px;
     display: flex;
 }
 
 .tab p {
+    width: 100px;
     padding-top: 35px;
     padding-bottom: 0;
 }
@@ -53,12 +55,127 @@
 }
 
 .announcement p {
-    color:blue;
+    color: rgb(46, 143, 181);
 }
 
 .announcement {
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border-radius: 20px;
     border-bottom: 2px;
-    border-color: blue;
+    border-color: rgb(46, 143, 181);
     border-style: solid;
+}
+
+.tintuc h2 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #6390ca;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: left;
+    line-height: 29px;
+    font-family: Tahoma;
+}
+
+
+.thongtin p {
+    line-height: 25px;
+    font-size: medium;
+    font-family: Tahoma;
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 100%;
+}
+
+.tintuc {
+    padding-left: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.thongtin {
+    flex-direction: row;
+    display: flex;
+}
+
+.hot {
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px;
+    border-color: rgb(229, 59, 59);
+    border-style: solid;
+}
+
+.hot p {
+    font-weight: bold;
+    position: static;
+    border-radius: 0px;
+    color: RED;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.bao img{
+    width: 200px;
+    height: auto;
+}
+
+.tin {
+    margin-bottom: 25px;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px;
+    border-color: rgb(229, 59, 59);
+    border-style: solid;
+}
+
+.tin p {
+    font-weight: bold;
+    position: static;
+    border-radius: 0px;
+    color: RED;
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+
+.bao {
+    margin-left: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+.bao h2 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #6390ca;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: left;
+    line-height: 29px;
+    font-family: Tahoma;
+}
+
+.chung {
+    width: 1450px;
+    padding-bottom: 30px;
+    border-bottom: 1px;
+    border-color: lightgrey;
+    border-style: solid;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.chung h2 {
+    margin-top: -5px;
+    margin-left: 30px;
 }
