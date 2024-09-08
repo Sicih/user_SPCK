@@ -1,4 +1,8 @@
-.heading {  
+body {
+    background-color: #f0f0f0;
+}
+
+.heading {
     width: 100%;
     margin: auto;
     font-family: Tahoma, sans-serif;
@@ -7,7 +11,8 @@
     border-bottom: 1px;
     border-color: black;
     border-style: solid;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .heading h1::after{
@@ -31,15 +36,8 @@
     margin-bottom: 20px;
 }
 
-#logo {
-    font-size: 40px;
-}
-
-#studentLogo {
-    font-size: 40px;
-}
-
 .tab {
+    margin-right: 550px;
     margin-top: -10px;
     display: flex;
 }
@@ -50,20 +48,17 @@
     padding-bottom: 0;
 }
 
-#user {
-    font-size: 40px;
-}
-
 .announcement p {
     color: rgb(46, 143, 181);
 }
 
-.announcement {
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    border-radius: 20px;
-    border-bottom: 2px;
-    border-color: rgb(46, 143, 181);
-    border-style: solid;
+#grip {
+    margin-left: 15px;
+    font-size: 30px;
+}
+
+#grip:hover {
+    cursor: pointer;
 }
 
 .tintuc h2 {
@@ -175,7 +170,13 @@
     display: flex;
 }
 
-.chung h2 {
+.art {
+    display: flex;
+    flex-direction: column;
     margin-top: -5px;
     margin-left: 30px;
+}
+
+.art p {
+    line-height: 19px;
 }
