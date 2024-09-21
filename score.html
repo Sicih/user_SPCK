@@ -25,16 +25,17 @@
 					<p onclick="location.href = 'score.html'">Điểm số</p>
 				</div>
 				<p onclick="location.href = 'main.html'">Thông báo</p>
-				<p>Tin nhắn</p>
+				<p id="maintenanceMessage">Tin nhắn</p>
+
 			</div>
 		</div>
 
-		<div class="semester">
-			<div class="semester1">Học kỳ 1</div>
-			<div class="semester2">Học kỳ 2</div>
+		<div class="semester" id="semester">
+			<div class="semester1" onclick="loadSemester('k1')">Học kỳ 1</div>
+			<div class="semester2" onclick="loadSemester('k2')">Học kỳ 2</div>
 		</div>
 
-		<table class="scoreboard">
+		<table class="scoreboard" id="scoreboard">
 			<thead>
 				<tr>
 					<th>Môn học</th>
@@ -45,7 +46,7 @@
 					<th>TBM</th>
 				</tr>
 			</thead>
-			<tbody id="result">
+			<tbody class="scoreTableBody" id="scoreTableBody">
 				
 			</tbody>
 		</table>

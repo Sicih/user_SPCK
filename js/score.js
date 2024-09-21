@@ -1,92 +1,62 @@
-async function getPoints() {
-    const studentId = document.getElementById('searchStudentId').value;
-    const url = `https://jsa37-api-bca8a1a0f23b.herokuapp.com/api/minhduc/pointList/${studentId}`;
+const apiUrl = "https://jsa37-api-bca8a1a0f23b.herokuapp.com/api/minhduc/users";
+let currentSubject = ""; 
+let currentSemester = ""; 
+let studentId = localStorage.getItem("userId");
 
+const scoreTableBody = document.getElementById("scoreTableBody");
+scoreTableBody.innerHTML = "";
+
+async function loadSemester(semester) {
+    currentSemester = semester;
     try {
-        const response = await fetch(url);
-        
-        if (response.ok) {
-            const data = await response.json();
-            displayPoints(data);
-        } else {
-            document.getElementById('result').innerHTML = 'Không tìm thấy thông tin học sinh!';
-        }
+        const response = await fetch(`${apiUrl}/${studentId}`);
+        const student = await response.json();
+        const scores = student.scores || {}; // Đảm bảo scores tồn tại
+
+        const scoreTableBody = document.getElementById("scoreTableBody");
+        scoreTableBody.innerHTML = "";
+
+        const subjects = [
+            { name: "Toán", key: "math" },
+            { name: "Văn", key: "literature" },
+            { name: "Tiếng Anh", key: "english" },
+            { name: "Địa", key: "geography" },
+            { name: "Lý", key: "physics" },
+            { name: "Hóa", key: "chemistry" },
+            { name: "Sinh", key: "biology" },
+        ];
+
+        subjects.forEach((subject) => {
+            // Kiểm tra xem môn học có trong dữ liệu scores hay không
+            const score = scores[subject.key]?.[semester] || {};
+            const avgScore = calculateAverageScore(score);
+
+            const row = `<tr>
+                            <td>${subject.name}</td>
+                            <td id="oralScore">${score.oral || "-"}</td>
+                            <td id="test15">${score.test15 || "-"}</td>
+                            <td id="test1">${score.test1 || "-"}</td>
+                            <td id="finalTest">${score.finalTest || "-"}</td>
+                            <td>${avgScore}</td>
+                         </tr>`;
+            scoreTableBody.innerHTML += row;
+        });
     } catch (error) {
-        document.getElementById('result').innerHTML = 'Lỗi kết nối đến máy chủ: ' + error.message;
+        console.error("Error fetching data:", error);
     }
 }
 
-function displayPoints(data) {
-    const resultDiv = document.getElementById('result');
-    if (data) {
-        const table = `
-            <tr>
-					<td>Toán</td>
-                    <td>${score.oralPoints.join(' ')}</td>
-                    <td>${score.fifteenMinPoints}</td>
-                    <td>${score.onePeriodPoints}</td>
-                    <td>${score.semesterPoints}</td>
-                    <td>${score.averagePoints}</td>
-				</tr>
-				<tr>
-					<td>Văn</td>
-                    <td>${score.oralPoints.join(' ')}</td>
-                    <td>${score.fifteenMinPoints}</td>
-                    <td>${score.onePeriodPoints}</td>
-                    <td>${score.semesterPoints}</td>
-                    <td>${score.averagePoints}</td>
-				</tr>
-				<tr>
-					<td>Ngoại ngữ</td>
-                    <td>${score.oralPoints.join(' ')}</td>
-                    <td>${score.fifteenMinPoints}</td>
-                    <td>${score.onePeriodPoints}</td>
-                    <td>${score.semesterPoints}</td>
-                    <td>${score.averagePoints}</td>
-				</tr>
-				<tr>
-					<td>Vật Lý</td>
-                    <td>${score.oralPoints.join(' ')}</td>
-                    <td>${score.fifteenMinPoints}</td>
-                    <td>${score.onePeriodPoints}</td>
-                    <td>${score.semesterPoints}</td>
-                    <td>${score.averagePoints}</td>
-				</tr>
-				<tr>
-					<td>Hóa</td>
-                    <td>${score.oralPoints.join(' ')}</td>
-                    <td>${score.fifteenMinPoints}</td>
-                    <td>${score.onePeriodPoints}</td>
-                    <td>${score.semesterPoints}</td>
-                    <td>${score.averagePoints}</td>
-				</tr>
-				<tr>
-					<td>Sinh học</td>
-                    <td>${score.oralPoints.join(' ')}</td>
-                    <td>${score.fifteenMinPoints}</td>
-                    <td>${score.onePeriodPoints}</td>
-                    <td>${score.semesterPoints}</td>
-                    <td>${score.averagePoints}</td>
-				</tr>
-				<tr>
-					<td>Địa Lí</td>
-                    <td>${score.oralPoints.join(' ')}</td>
-                    <td>${score.fifteenMinPoints}</td>
-                    <td>${score.onePeriodPoints}</td>
-                    <td>${score.semesterPoints}</td>
-                    <td>${score.averagePoints}</td>
-				</tr>
-				<tr>
-					<td>Tin học</td>
-                    <td>${score.oralPoints.join(' ')}</td>
-                    <td>${score.fifteenMinPoints}</td>
-                    <td>${score.onePeriodPoints}</td>
-                    <td>${score.semesterPoints}</td>
-                    <td>${score.averagePoints}</td>
-				</tr>
-        `;
-        resultDiv.innerHTML = table;
-    } else {
-        resultDiv.innerHTML = 'Không tìm thấy dữ liệu!';
-    }
+function calculateAverageScore(score) {
+    
+    const oral = Number(score.oral) || 0;
+    const test15 = Number(score.test15) || 0;
+    const test1 = Number(score.test1) || 0;
+    const finalTest = Number(score.finalTest) || 0;
+
+    const total = oral + test15 + test1 + finalTest;
+    return (total / 4).toFixed(2);
 }
+
+document.getElementById("maintenanceMessage").onclick = function() {
+    alert("Trang đang được bảo trì. Xin vui lòng quay lại sau!");
+};

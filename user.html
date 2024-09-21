@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Student Login</title>
+		<title>Student Signup</title>
 		<link rel="stylesheet" href="./css_user/user.css" />
 		<link
 			rel="stylesheet"
@@ -19,54 +19,42 @@
 	</head>
 	<body>
 		<div class="heading">
-			<i class="fa-regular fa-circle-user" id="grip"></i>
+			<i
+				class="fa-regular fa-circle-user"
+				id="grip"
+				onclick="location.href = 'user.html'"
+			></i>
 			<div class="tab">
-				<div class="score">
-					<p onclick="location.href = 'score.html'">Điểm số</p>
+				<p onclick="location.href = 'score.html'">Điểm số</p>
+				<div class="announcement">
+					<p onclick="location.href = 'main.html'">Thông báo</p>
 				</div>
-				<p onclick="location.href = 'main.html'">Thông báo</p>
-				<p>Tin nhắn</p>
+				<p id="maintenanceMessage">Tin nhắn</p>
 			</div>
 		</div>
 
-        <div class="profile-container">
+		<div class="profile-container">
 			<h2>Hồ sơ của tôi</h2>
 			<div class="account-info">
 				<h3>Thông tin tài khoản</h3>
-				<div class="user_information">
-					<div class="title">
-                        <div class="ab"><p>Tên đăng nhập:</p></div>
-						<div class="ab"><p>Số điện thoại:</p></div>
-						<div class="ab"><p>Email:</p></div>
-						<div class="ab"><p>Mật khẩu:</p></div>
-					</div>
-					<div class="info">
-						<div class="ab"><p>Tên đăng nhập:</p></div>
-						<div class="ab"><p>Số điện thoại:</p></div>
-						<div class="ab"><p>Email:</p></div>
-						<div class="ab"><p>Mật khẩu:</p></div>
-					</div>
-				</div>
+				<p><strong>Tên đăng nhập:</strong> <span id="username"></span></p>
+				<p><strong>Email:</strong> <span id="email"></span></p>
 			</div>
 			<div class="personal-info">
 				<h3>Thông tin cá nhân</h3>
-				<div class="user_information">
-					<div class="title">
-						<div class="ab"><p>Tên:</p></div>
-						<div class="ab"><p>Ngày sinh:</p></div>
-						<div class="ab"><p>Trường:</p></div>
-						<div class="ab"><p>Lớp:</p></div>
-					</div>
-					<div class="info">
-						<div class="ab"><p>Tên đăng nhập:</p></div>
-						<div class="ab"><p>Số điện thoại:</p></div>
-						<div class="ab"><p>Email:</p></div>
-						<div class="ab"><p>Mật khẩu:</p></div>
-					</div>
-				</div>
+				<p><strong>Tên:</strong> <span id="fullName"></span></p>
+				<p><strong>Ngày sinh:</strong> <span id="dob"></span></p>
+				<p><strong>Cấp độ học:</strong> <span id="gradeLevel"></span></p>
 			</div>
 		</div>
-        
-		<script src="js/user.js"></script>
+	
+		<div class="logout-container">
+			<button id="logoutBtn" class="logout-button">Đăng xuất</button>
+		</div>
+	</div>
+	
+
+		
+		<script src="./js/user.js"></script>
 	</body>
 </html>
